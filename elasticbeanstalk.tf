@@ -6,7 +6,7 @@ resource "aws_elastic_beanstalk_application" "app" {
 # this automatically retrieves the latest solution stack
 data "aws_elastic_beanstalk_solution_stack" "php-latest" {
   most_recent = true
-  name_regex = "^64bit Amazon Linux (.*) running PHP 8.(.*)$"
+  name_regex  = "^64bit Amazon Linux (.*) running PHP 8.(.*)$"
 }
 
 resource "aws_elastic_beanstalk_environment" "app-prod" {
@@ -96,22 +96,22 @@ resource "aws_elastic_beanstalk_environment" "app-prod" {
   setting {
     namespace = "aws:elasticbeanstalk:application:environment"
     name      = "RDS_USERNAME"
-    value     = aws_db_instance.mariadb.username
+    value     = aws_db_instance.mysql.username
   }
   setting {
     namespace = "aws:elasticbeanstalk:application:environment"
     name      = "RDS_PASSWORD"
-    value     = aws_db_instance.mariadb.password
+    value     = aws_db_instance.mysql.password
   }
   setting {
     namespace = "aws:elasticbeanstalk:application:environment"
     name      = "RDS_DATABASE"
-    value     = aws_db_instance.mariadb.db_name
+    value     = aws_db_instance.mysql.db_name
   }
   setting {
     namespace = "aws:elasticbeanstalk:application:environment"
     name      = "RDS_HOSTNAME"
-    value     = aws_db_instance.mariadb.endpoint
+    value     = aws_db_instance.mysql.endpoint
   }
 }
 

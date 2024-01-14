@@ -21,10 +21,10 @@ resource "aws_security_group" "app-prod" {
   }
 }
 
-resource "aws_security_group" "allow-mariadb" {
+resource "aws_security_group" "allow-mysql" {
   vpc_id      = aws_vpc.main.id
-  name        = "allow-mariadb"
-  description = "allow-mariadb"
+  name        = "allow-mysql"
+  description = "allow-mysql"
   ingress {
     from_port       = 3306
     to_port         = 3306
@@ -39,7 +39,7 @@ resource "aws_security_group" "allow-mariadb" {
     self        = true
   }
   tags = {
-    Name = "allow-mariadb"
+    Name = "allow-mysql"
   }
 }
 
